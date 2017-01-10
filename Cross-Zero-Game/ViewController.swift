@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var Winning_Combination = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
     @IBOutlet weak var player_Status: UILabel!
-    @IBOutlet weak var play_Again: SpringButton!
+    @IBOutlet weak var play_Again: UIButton!
     
     @IBAction func didPress(_ sender: AnyObject) {
         if (state[sender.tag - 1] == 0){
@@ -34,22 +34,31 @@ class ViewController: UIViewController {
             if  state[comination[0]] != 0 && state[comination[0]] == state[comination[1]] &&
                 state[comination[1]] == state[comination[2]] {
                 gameisActive = false
-                if state[comination[0]] == 1{
+                if state[comination[0]] == 1 {
                     //Cross has won
                     player_Status.text = "Cross has Won"
                     
-                } else{
+                } else if state[comination[0]] == 2 {
                     //Nought has won
                     player_Status.text = "Nought has Won"
 
+                }else if state[comination[0]] == 3 {
+                    player_Status.text = "Draw Try one more time"
+                    player_Status.isHidden = false
+                    play_Again.isHidden = false
                 }
                 player_Status.isHidden = false
                 play_Again.isHidden = false
             }
             
+//            if Winning_Combination.count == 7{
+//                player_Status.isHidden = false
+//                play_Again.isHidden = false
+//                player_Status.text = "Try one more time"
+//
+//            }
         }
         
-
     }
     
     @IBAction func playAgain(_ sender: AnyObject) {
@@ -57,15 +66,20 @@ class ViewController: UIViewController {
         state = [0,0,0,0,0,0,0,0,0]
         gameisActive = true
         player_Status.isHidden = true
-        play_Again.isHidden = true
+//        play_Again.isHidden = true
         for i in 1...9 {
             let b = view.viewWithTag(i) as! UIButton
             b.setImage(nil, for: .normal)
         }
         
     }
+    
+   
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        player_Status.isHidden = true
     }
 }
 
