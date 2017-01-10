@@ -80,6 +80,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         player_Status.isHidden = true
+        
+        player_Status.layer.cornerRadius = 5
+        player_Status.layer.borderWidth  = 3
+        player_Status.layer.borderColor = UIColor.lightGray.cgColor
+        player_Status.layer.shadowColor = UIColor.gray.cgColor
+        player_Status.layer.shadowOpacity = 1
+        player_Status.layer.shadowOffset = CGSize.zero
+        player_Status.layer.shadowRadius = 10
+        player_Status.layer.shadowPath = UIBezierPath(rect: player_Status.bounds).cgPath
+        
+
+        play_Again.layer.cornerRadius = 5
+        play_Again.layer.borderWidth  = 3
+        play_Again.layer.borderColor = UIColor.lightGray.cgColor
+        play_Again.layer.shadowColor = UIColor.gray.cgColor
+        play_Again.layer.shadowOpacity = 1
+        play_Again.layer.shadowOffset = CGSize.zero
+        play_Again.layer.shadowRadius = 10
+        play_Again.layer.shadowPath = UIBezierPath(rect: play_Again.bounds).cgPath
+        
     }
 }
 
